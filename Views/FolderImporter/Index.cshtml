@@ -1,0 +1,31 @@
+﻿@model GFLTestTask.Models.Folder
+
+<h1>Folder Structure</h1>
+
+<ul>
+    <li>
+        @Model.FolderName
+        @if (Model.Subfolders != null && Model.Subfolders.Count > 0)
+        {
+            <ul>
+                @foreach (var childFolder in Model.Subfolders)
+                {
+                    <li>
+                        <text>@childFolder.FolderName</text>
+                        @if (childFolder.Subfolders != null && Model.Subfolders.Count > 0)
+                        {
+                            <ul>
+                                @foreach (var subFolder in childFolder.Subfolders)
+                                {
+                                    <li>
+                                        <text>@subFolder.FolderName</text>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        }
+    </li>
+</ul>

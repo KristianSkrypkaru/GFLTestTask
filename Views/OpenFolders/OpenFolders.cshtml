@@ -1,0 +1,11 @@
+﻿@model GFLTestTask.Models.Folder
+
+@{
+    ViewBag.Title = "Open Folders";
+}
+
+<h3>"Folder" - @Model.FolderName</h3>
+        @foreach (var folder in Model.Subfolders)
+        {
+            <p>@Html.ActionLink(folder.FolderName, "OpenFolders", "OpenFolders", new{name = folder.FolderName})</p>  
+        }

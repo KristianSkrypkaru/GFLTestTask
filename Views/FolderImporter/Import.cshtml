@@ -1,0 +1,40 @@
+﻿@model GFLTestTask.Models.Folder
+
+<h1>Imported Folder Structure</h1>
+
+@if (Model != null)
+{
+    <ul>
+        <li>
+            @Model.FolderName
+            @if (Model.Subfolders.Any())
+            {
+                <ul>
+                    @foreach (var childFolder in Model.Subfolders)
+                    {
+                        <li>
+                            <text>@childFolder.FolderName</text>
+                            @if (childFolder.Subfolders.Any())
+                            {
+                                <ul>
+                                    @foreach (var subChildDirectory in childFolder.Subfolders)
+                                    {
+                                        <li>
+                                            <text>@subChildDirectory.FolderName</text>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+        </li>
+    </ul>
+}
+else
+{
+    <p>No directory structure imported.</p>
+}
+
+<a asp-action="Index">Back to Imported Structure</a>
